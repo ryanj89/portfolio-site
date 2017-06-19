@@ -1,0 +1,44 @@
+<!-- Sidebar -->
+<nav id="sidebar" [class.active]="isActive">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+        <!-- Sidebar Toggle -->
+        <button 
+            (click)="onActive()" 
+            id="sidebarCollapse" 
+            class="sidebar-btn" 
+            [class.active]="isActive" 
+            type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+        </button>
+    </div>
+
+    <!-- Sidebar Links -->
+    <ul class="list-unstyled links">
+        <li class="active">
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+
+        <li><!-- Link with dropdown items -->
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Portfolio</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li><a href="#">Challenge Accepted</a></li>
+                <li><a href="#">WeDJ</a></li>
+                <li><a href="#">Tower Defense</a></li>
+                <li><a href="#">Trivia Game</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Blog</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+</nav>
+<!-- ./Sidebar -->

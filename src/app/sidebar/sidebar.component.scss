@@ -1,14 +1,5 @@
 @import "~styles/variables";
 
-#wrapper {
-    display: block;
-}
-
-#content {
-  z-index: 5;
-  width: 100%;
-}
-
 // Sidebar
 #sidebar {
     position: fixed;
@@ -130,12 +121,4 @@ ul ul a {
         transform: none;
     }
 
-}
-
-
-// Jumbotron
-.hero-image {
-    object-fit: cover;
-    min-height: 500px;
-    width: 100%;
 }

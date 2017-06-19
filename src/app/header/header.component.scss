@@ -1,0 +1,13 @@
+@import "~styles/variables";
+
+.navbar {
+  height: 60px;
+  z-index: 1;
+}
+
+.navbar-brand {
+    padding: 8px 0;
+    h4 {
+        margin: 0;
+    }
+}
