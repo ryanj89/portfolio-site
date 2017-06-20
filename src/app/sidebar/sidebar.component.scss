@@ -5,22 +5,24 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 10;
+    z-index: 9997;
     min-width: 300px;
     max-width: 300px;
+    margin-right: -300px;
     height: 100vh;
-    background: $primary-color-dark;
+    background: rgba(2, 18, 35, .3);
     color: $primary-text-light;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
 
+
+
     .sidebar-header {
         height: 54px;
-        background: $primary-color-darker;
     }
 
     ul.links {
+        z-index: 9999;
         padding: 0 0 20px;
-        border-bottom: 1px solid $primary-color;
     }
 
     ul li a {
@@ -42,7 +44,8 @@ a[aria-expanded="true"]  {
 }
 
 #sidebar.active {
-    margin-right: -300px;
+    backdrop-filter: blur(3px);
+    margin-right: 0;
 }
 
 a[data-toggle="collapse"] {
@@ -70,55 +73,75 @@ ul ul a {
     background: $primary-color-darker;
 }
 
+
 // Sidebar Toggle
 #sidebarCollapse {
     border: none;
     width: 44px;
     height: 44px;
     background: transparent;
-}
-
-#sidebarCollapse.sidebar-btn {
     outline: none;
     position: fixed;
     top: 8px;
     right: 16px;
 }
-
 #sidebarCollapse span {
     width: 80%;
     height: 2px;
-    margin: 0 auto;
-    display: block;
-    background: $background;
-    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
-}
-// Toggle Animations
-#sidebarCollapse span:first-of-type {
-  transform: rotate(45deg) translate(2px, 2px);
-}
-#sidebarCollapse span:nth-of-type(2) {
-  opacity: 0;
-}
-#sidebarCollapse span:last-of-type {
-  transform: rotate(-45deg) translate(1px, -1px);
-}
-#sidebarCollapse.active span {
-    transform: none;
-    opacity: 1;
     margin: 5px auto;
+    display: block;
+    opacity: 1;
+    transform: none;
+    background: $background;
+    transition: all 0.65s cubic-bezier(0.810, -.330, 0.345, 1.375);
+}
+
+// Toggle Animations
+#sidebarCollapse.active {
+    span {
+        background: $background;
+        opacity: 1;
+        margin: 0 auto;
+    }
+    span:first-of-type {
+        transform: rotate(405deg) translate(2px, 2px);
+    }
+    span:nth-of-type(2) {
+        opacity: 0;
+    }
+    span:last-of-type {
+        transform: rotate(-405deg) translate(1px, -1px);
+    }
 }
 
 
 // Media Queries
 @media (max-width: 768px) {
   
-    #sidebar {
-        margin-right: 0;
-    }
-    #sidebar.active {
-        margin-right: -300px;
-        transform: none;
-    }
+    // #sidebar {
+    //     margin-right: 0;
+    // }
+    // #sidebar.active {
+    //     margin-right: -300px;
+    //     transform: none;
+    // }
 
+}
+
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    display: none;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    z-index: 9996;
+}
+#overlay.active {
+    display: block;
+    opacity: 1;
 }

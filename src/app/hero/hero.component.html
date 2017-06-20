@@ -1,0 +1,11 @@
+<img src="./assets/img/denver_skyline.jpg" [@bgFade]="state" class="img-fluid hero-image" alt="Denver Skyline">
+<div class="container title">
+  <h1 [@heroFade]="state">Ryan Johnson</h1>
+  <div class="details" [@listAnimation]="items.length">
+    <div *ngFor="let item of items">
+
+      <h4>{{item}}</h4>
+
+    </div>
+  </div>
+</div>

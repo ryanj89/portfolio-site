@@ -1,5 +1,15 @@
-<nav class="navbar navbar-inverse fixed-top navbar-toggleable-md">
+<nav class="navbar navbar-inverse fixed-top navbar-toggleable-sm">
 
-    <a class="navbar-brand mx-auto" href="#"><h4>Ryan Johnson</h4></a>
+  <div class="navbar-brand--container" [@linkFade]="scrolled">
+    <a class="navbar-brand" *ngIf="scrolled" href="#">
+      <h4>Ryan Johnson</h4>
+    </a>
+  </div>
+  
+    <ul class="navbar-nav mr-auto hidden-sm-down" *ngIf="scrolled">
+      <li class="nav-item" *ngFor="let link of links">
+        <a class="nav-link" href="#">{{link}}</a>
+      </li>
+    </ul>
 
 </nav>

@@ -1,5 +1,6 @@
 <!-- Sidebar -->
 <nav id="sidebar" [class.active]="isActive">
+  
     <!-- Sidebar Header -->
     <div class="sidebar-header">
         <!-- Sidebar Toggle -->
@@ -25,8 +26,8 @@
         </li>
 
         <li><!-- Link with dropdown items -->
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Portfolio</a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
+            <a href="#portfolioSubmenu" data-toggle="collapse" aria-expanded="false">Portfolio</a>
+            <ul class="collapse list-unstyled sidebar-submenu" id="portfolioSubmenu">
                 <li><a href="#">Challenge Accepted</a></li>
                 <li><a href="#">WeDJ</a></li>
                 <li><a href="#">Tower Defense</a></li>
@@ -34,7 +35,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">Blog</a>
+            <a href="#">Music</a>
         </li>
         <li>
             <a href="#">Contact</a>
@@ -42,3 +43,6 @@
     </ul>
 </nav>
 <!-- ./Sidebar -->
+
+<!-- Overlay -->
+<div id="overlay" (click)="isActive ? isActive = !isActive : isActive" [class.active]="isActive"></div>
