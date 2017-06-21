@@ -24,8 +24,8 @@ import { DOCUMENT } from '@angular/platform-browser';
 
         transition('* => init', [
 
-            style({ transform: 'scale(.9)', opacity: 0, marginTop: '120px' }),
-            animate('1s 1000ms linear', style({ transform: 'scale(1)', opacity: 1, marginTop: '150px' }))
+            style({ transform: 'scale(.95)', opacity: 0 }),
+            animate('1s 1200ms linear', style({ transform: 'scale(1)', opacity: 1 }))
 
         ]),
 
@@ -37,7 +37,7 @@ import { DOCUMENT } from '@angular/platform-browser';
                     params: {
                         from: 0,
                         to: 1,
-                        time: '0.5s 800ms ease-out'
+                        time: '0.5s ease-out'
                     }
                 })
           
@@ -49,7 +49,7 @@ import { DOCUMENT } from '@angular/platform-browser';
                     params: {
                         from: 1,
                         to: 0,
-                        time: '0.5s 800ms ease-out'
+                        time: '0.5s ease-out'
                     }
                 })
           
@@ -67,9 +67,9 @@ import { DOCUMENT } from '@angular/platform-browser';
 
             ], { optional: true }),
 
-            query('h4', stagger('800ms', [
+            query('h4', stagger('750ms', [
 
-                animate('1s 1500ms ease', style({ opacity: 1 }))
+                animate('1s 2200ms ease-in', style({ opacity: 1 }))
 
             ]), { optional: true })
 
@@ -79,31 +79,29 @@ import { DOCUMENT } from '@angular/platform-browser';
 
             query('h4', [
 
-                style({ opacity: 0 }),
+                style({ opacity: 0, transform: 'translateY(-100px)' }),
 
             ], { optional: true }),
             query('h4', stagger('200ms', [
 
-                animate('1s 200ms ease', style({ opacity: 1 }))
+                animate('1s 200ms ease', style({ opacity: 1, transform: 'translateY(0)'  }))
 
             ]), { optional: true })
         ]),
 
-        transition('* => *', [
+        transition('* => fadeOut', [
 
             query(':leave', [
 
-                style({ opacity: 1 }),
+                style({ opacity: 1, transform: 'translateY(0)' }),
 
             ], { optional: true }),
 
-            query(':leave', stagger('200ms reverse', [
-            // query(':leave', [
+            query(':leave', [
 
-                animate('1s 100ms ease', style({ opacity: 0 })),
-                style({ display: 'none' })
+                animate('0.5s 100ms ease-in-out', style({ opacity: 0, transform: 'translateY(-100px)' })),
 
-            ]), { optional: true })
+            ], { optional: true })
 
         ])
     ])
@@ -115,8 +113,9 @@ export class HeroComponent implements OnInit {
 
 
   state = 'init';
-  // state = 'fadeIn';
+  linkState = 'init';
   scrolled: boolean = false;
+  linkScrolled: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -126,7 +125,15 @@ export class HeroComponent implements OnInit {
   onWindowScroll() {
     let num = this.document.body.scrollTop;
     console.log(num);
-    if (num > 110) {
+    if (num > 205) {
+      this.linkState = 'fadeOut';
+      this.linkScrolled = true;
+    }
+    else if (this.linkScrolled && num < 205) {
+      this.linkState = 'fadeIn';
+      this.linkScrolled = false;
+    }
+    if (num > 161) {
       this.scrolled = true;
       this.state = 'fadeOut';
     }
@@ -134,5 +141,6 @@ export class HeroComponent implements OnInit {
       this.scrolled = false;
       this.state = 'fadeIn';
     }
+
   }
 }

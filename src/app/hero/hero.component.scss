@@ -23,17 +23,19 @@
 }
 
 .hero-container {
+    min-height: 78px;
     margin-top: 150px;
-
 }
 
 .details {
+  min-height: 40px;
   margin-top: 15px;
   display: flex;
   width: 420px;
   justify-content: space-between;
 
   h4 {
+    font-size: 24px;
     margin: 0;
     padding: 6px 0;
     border-bottom: 2px solid #fff;

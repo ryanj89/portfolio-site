@@ -19,7 +19,7 @@ import { DOCUMENT } from '@angular/platform-browser';
                       params: {
                           from: 0,
                           to: 1,
-                          time: '0.5s ease-in'
+                          time: '0.5s 100ms ease-out'
                       }
                   })
             
@@ -31,7 +31,7 @@ import { DOCUMENT } from '@angular/platform-browser';
                       params: {
                           from: 1,
                           to: 0,
-                          time: '0.6s 800ms ease'
+                          time: '0.5s ease-out'
                       }
                   })
             
@@ -45,13 +45,13 @@ import { DOCUMENT } from '@angular/platform-browser';
 
               query('li', [
 
-                  style({ opacity: 0 }),
+                  style({ opacity: 0, marginTop: '-50px' }),
 
               ], { optional: true }),
 
               query('li', stagger('100ms', [
 
-                  animate('1s 200ms ease', style({ opacity: 1 }))
+                  animate('0.5s 100ms ease-in-out', style({ opacity: 1, marginTop: 0 }))
 
               ]), { optional: true })
 
@@ -61,14 +61,13 @@ import { DOCUMENT } from '@angular/platform-browser';
 
               query(':leave', [
 
-                  style({ opacity: 1 }),
+                  style({ opacity: 1, marginTop: 0 }),
 
               ], { optional: true }),
 
-              query(':leave', stagger('200ms reverse', [
+              query(':leave', stagger('100ms', [
 
-                  animate('1s 100ms ease', style({ opacity: 0 })),
-                  style({ display: 'none' })
+                  animate('0.5s 100ms ease-in-out', style({ opacity: 0, marginTop: '-50px' })),
 
               ]), { optional: true })
 
@@ -78,7 +77,9 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 export class HeaderComponent implements OnInit {
   scrolled: boolean = false;
+  navScrolled: boolean = false;
   state = '';
+  navState = '';
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -89,10 +90,18 @@ export class HeaderComponent implements OnInit {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let num = this.document.body.scrollTop;
-    if (num > 150) {
+    if (num > 205) {
+      this.navState = 'fadeIn';
+      this.navScrolled = true;
+    }
+    else if (this.navScrolled && num < 205) {
+      this.navState = 'fadeOut';
+      this.navScrolled = false;
+    }
+    if (num > 161) {
       this.scrolled = true;
       this.state = 'fadeIn';
-    } else if (this.scrolled && num < 150) {
+    } else if (this.scrolled && num < 110) {
       this.scrolled = false;
       this.state = 'fadeOut';
     }

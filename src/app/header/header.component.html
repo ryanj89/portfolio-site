@@ -6,15 +6,15 @@
     </a>
   </div>
 
-  <div [@staggerAnimation]="state">
-    <ul class="navbar-nav hidden-sm-down mr-auto">
-      <li class="nav-item" *ngIf="scrolled">
+  <div [@staggerAnimation]="navState" class="mx-auto">
+    <ul class="navbar-nav hidden-sm-down">
+      <li class="nav-item" *ngIf="navScrolled">
         <a class="nav-link" href="#">Developer</a>
       </li>
-      <li class="nav-item" *ngIf="scrolled">
+      <li class="nav-item" *ngIf="navScrolled">
         <a class="nav-link" href="#">Designer</a>
       </li>
-      <li class="nav-item" *ngIf="scrolled">
+      <li class="nav-item" *ngIf="navScrolled">
         <a class="nav-link" href="#">Musician</a>
       </li>
     </ul>
