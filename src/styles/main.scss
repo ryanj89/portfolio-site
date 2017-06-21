@@ -6,16 +6,21 @@
 // @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700");
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: $font-family-sans-serif;
   background: $background;
   z-index: 5;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway';
+}
+
+
 p {
   // font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 1.1em;
-  line-height: 1.7em;
+  // font-weight: 400;
+  font-size: 18px;
+  // line-height: 1.7em;
   color: $primary-color-dark;
 }
 
