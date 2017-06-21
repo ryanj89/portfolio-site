@@ -5,11 +5,19 @@
       <h4>Ryan Johnson</h4>
     </a>
   </div>
-  
-    <ul class="navbar-nav mr-auto hidden-sm-down" *ngIf="scrolled">
-      <li class="nav-item" *ngFor="let link of links">
-        <a class="nav-link" href="#">{{link}}</a>
+
+  <div [@staggerAnimation]="state">
+    <ul class="navbar-nav hidden-sm-down mr-auto">
+      <li class="nav-item" *ngIf="scrolled">
+        <a class="nav-link" href="#">Developer</a>
+      </li>
+      <li class="nav-item" *ngIf="scrolled">
+        <a class="nav-link" href="#">Designer</a>
+      </li>
+      <li class="nav-item" *ngIf="scrolled">
+        <a class="nav-link" href="#">Musician</a>
       </li>
     </ul>
+  </div>
 
 </nav>

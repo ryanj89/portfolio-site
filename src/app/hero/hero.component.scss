@@ -12,7 +12,6 @@
 .title {
     h1 {
         font-size: 4em;
-        margin-top: 150px;
     }
     color: $background;
     display: flex;
@@ -23,28 +22,32 @@
     margin-bottom: 20px;
 }
 
+.hero-container {
+    margin-top: 150px;
+
+}
+
 .details {
   margin-top: 15px;
   display: flex;
   width: 420px;
   justify-content: space-between;
+
   h4 {
     margin: 0;
-  }
-  div {
     padding: 6px 0;
     border-bottom: 2px solid #fff;
     transition: all .5s ease;
   }
 
-  div:first-of-type {
+  h4:first-of-type {
     margin-left: 10px;
   }
-  div:last-of-type {
+  h4:last-of-type {
     margin-right: 10px;
   }
 
-  div:hover {
+  h4:hover {
     cursor: pointer;
     margin-left: 0;
     margin-right: 0;

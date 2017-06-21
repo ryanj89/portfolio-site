@@ -1,5 +1,7 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
-import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { animate, query, stagger, style, transition, trigger, useAnimation } from '@angular/animations';
+import { fadeAnimation } from '../animations/animations';
+
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
@@ -8,62 +10,129 @@ import { DOCUMENT } from '@angular/platform-browser';
   styleUrls: ['./hero.component.scss'],
   animations: [
     trigger('bgFade', [
-      transition('* => fadeIn', [
-        style({ opacity: 0, marginTop: '-18px' }),
-        animate('1.2s linear', style({ opacity:1, marginTop: 0 }))
-      ]),
-      transition('* => fadeOut', [
-        animate(2000, style({ opacity:0 }))
-      ])
+
+        transition('* => init', [
+
+            style({ opacity: 0, marginTop: '-18px' }),
+            animate('1.2s linear', style({ opacity:1, marginTop: 0 }))
+
+        ])
+
     ]),
+
     trigger('heroFade', [
-      transition('* => fadeIn', [
-        style({ transform: 'scale(.9)', opacity: 0, marginTop: '170px' }),
-        animate('1s 1000ms linear', style({ transform: 'scale(1)', opacity:1, marginTop: '150px' }))
-      ]),
-      transition('* => fadeOut', [
-        animate(2000, style({ opacity:0 }))
-      ])
+
+        transition('* => init', [
+
+            style({ transform: 'scale(.9)', opacity: 0, marginTop: '120px' }),
+            animate('1s 1000ms linear', style({ transform: 'scale(1)', opacity: 1, marginTop: '150px' }))
+
+        ]),
+
+        transition('* => *', [
+        
+            query(':enter', [
+
+                useAnimation(fadeAnimation, {
+                    params: {
+                        from: 0,
+                        to: 1,
+                        time: '0.5s 800ms ease-out'
+                    }
+                })
+          
+            ], { optional: true }),
+        
+            query(':leave', [
+
+                useAnimation(fadeAnimation, {
+                    params: {
+                        from: 1,
+                        to: 0,
+                        time: '0.5s 800ms ease-out'
+                    }
+                })
+          
+            ], { optional: true }),
+        ]),
     ]),
-    trigger('listAnimation', [
-      transition('* => *', [
-        query(':enter', [
-          style({ opacity: 0 }),
-        ], { optional: true }),
-        query(':enter', stagger('800ms', [
-          animate('1.2s 2000ms ease-out', style({ opacity: 1 }))
-        ]), { optional: true })
-      ])
+
+    trigger('staggerAnimation', [
+
+        transition('* => init', [
+
+            query('h4', [
+
+                style({ opacity: 0 }),
+
+            ], { optional: true }),
+
+            query('h4', stagger('800ms', [
+
+                animate('1s 1500ms ease', style({ opacity: 1 }))
+
+            ]), { optional: true })
+
+        ]),
+
+        transition('* => fadeIn', [
+
+            query('h4', [
+
+                style({ opacity: 0 }),
+
+            ], { optional: true }),
+            query('h4', stagger('200ms', [
+
+                animate('1s 200ms ease', style({ opacity: 1 }))
+
+            ]), { optional: true })
+        ]),
+
+        transition('* => *', [
+
+            query(':leave', [
+
+                style({ opacity: 1 }),
+
+            ], { optional: true }),
+
+            query(':leave', stagger('200ms reverse', [
+            // query(':leave', [
+
+                animate('1s 100ms ease', style({ opacity: 0 })),
+                style({ display: 'none' })
+
+            ]), { optional: true })
+
+        ])
     ])
+
   ]
 })
 export class HeroComponent implements OnInit {
-  items = ['Developer', 'Designer', 'Musician'];
-  state = 'fadeIn';
+
+
+
+  state = 'init';
+  // state = 'fadeIn';
   scrolled: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() { }
 
-  fadeIn() {
-    this.state = 'fadeIn';
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    let num = this.document.body.scrollTop;
+    console.log(num);
+    if (num > 110) {
+      this.scrolled = true;
+      this.state = 'fadeOut';
+    }
+    else if (this.scrolled && num < 110) {
+      this.scrolled = false;
+      this.state = 'fadeIn';
+    }
   }
-  fadeOut() {
-    this.state = 'fadeOut';
-  }
-
-
-  // @HostListener("window:scroll", [])
-  // onWindowScroll() {
-  //   let num = this.document.body.scrollTop;
-  //   // console.log(num);
-  //   if (num > 130) {
-  //     this.scrolled = true;
-  //     // this.state = 'fadeOut';
-  //   } else if (this.scrolled && num < 50) {
-  //     this.scrolled = false;
-  //     // this.state = 'fadeIn';
-  //   }
-  // }
 }
