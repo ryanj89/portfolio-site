@@ -18,27 +18,35 @@
 
     <!-- Sidebar Links -->
     <ul class="list-unstyled links">
-        <li class="active">
-            <a href="#">Home</a>
+        <li routerLinkOptions="active">
+            <a href="#" (click)="onActive()">Home</a>
         </li>
-        <li>
-            <a href="#">About</a>
+        <li routerLinkOptions="active">
+            <a href="#about-section" (click)="onActive()">About</a>
         </li>
 
         <li><!-- Link with dropdown items -->
             <a href="#portfolioSubmenu" data-toggle="collapse" aria-expanded="false">Portfolio</a>
             <ul class="collapse list-unstyled sidebar-submenu" id="portfolioSubmenu">
-                <li><a href="#">Challenge Accepted</a></li>
-                <li><a href="#">WeDJ</a></li>
-                <li><a href="#">Tower Defense</a></li>
-                <li><a href="#">Trivia Game</a></li>
+                <li>
+                  <a href="#challenge-accepted" (click)="onActive()">Challenge Accepted</a>
+                </li>
+                <li>
+                  <a href="#we-dj" (click)="onActive()">WeDJ</a>
+                </li>
+                <li>
+                  <a href="#tower-defense" (click)="onActive()">Tower Defense</a>
+                </li>
+                <li>
+                  <a href="#trivia-game" (click)="onActive()">Trivia Game</a>
+                </li>
             </ul>
         </li>
         <li>
-            <a href="#">Music</a>
+            <a href="#music-section" (click)="onActive()">Music</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="#contact-section" (click)="onActive()">Contact</a>
         </li>
     </ul>
 </nav>

@@ -11,11 +11,27 @@ import { DOCUMENT } from '@angular/platform-browser';
   animations: [
     trigger('bgFade', [
 
-        transition('* => init', [
+        // transition('* => init', [
 
-            style({ opacity: 0, marginTop: '-18px' }),
-            animate('1.2s linear', style({ opacity:1, marginTop: 0 }))
+        //     style({ opacity: 0, marginTop: '-18px' }),
+        //     animate('1.2s linear', style({ opacity:1, marginTop: 0 }))
 
+        // ]),
+
+        transition('* => *', [
+            query(':enter', [
+
+                style({ opacity: 0, marginTop: '-18px' }),
+                animate('1s ease', style({ opacity:1, marginTop: 0 }))
+                
+            ], { optional: true }),
+
+            query(':leave', [
+
+                style({ opacity: 1 }),
+                animate('0.5s ease-out', style({ opacity:0 })),
+
+            ], { optional: true })
         ])
 
     ]),
@@ -32,26 +48,29 @@ import { DOCUMENT } from '@angular/platform-browser';
         transition('* => *', [
         
             query(':enter', [
-
-                useAnimation(fadeAnimation, {
-                    params: {
-                        from: 0,
-                        to: 1,
-                        time: '0.5s ease-out'
-                    }
-                })
+                style({ opacity: 0, transform: 'scale(0.95)' }),
+                animate('0.5s ease-out', style({ opacity: 1, transform: 'scale(1)' }))
+                // useAnimation(fadeAnimation, {
+                //     params: {
+                //         from: 0,
+                //         to: 1,
+                //         time: '0.5s ease-out'
+                //     }
+                // })
           
             ], { optional: true }),
         
             query(':leave', [
 
-                useAnimation(fadeAnimation, {
-                    params: {
-                        from: 1,
-                        to: 0,
-                        time: '0.5s ease-out'
-                    }
-                })
+                style({ opacity: 1, transform: 'scale(1)' }),
+                animate('0.5s ease-out', style({ opacity: 0, transform: 'scale(0.95)' }))
+                // useAnimation(fadeAnimation, {
+                //     params: {
+                //         from: 1,
+                //         to: 0,
+                //         time: '0.5s ease-out'
+                //     }
+                // })
           
             ], { optional: true }),
         ]),
@@ -110,10 +129,11 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 export class HeroComponent implements OnInit {
 
-
-
+  bgScrollTop = 0;
   state = 'init';
   linkState = 'init';
+  bgToggled: boolean = true;
+
   scrolled: boolean = false;
   linkScrolled: boolean = false;
 
@@ -124,7 +144,10 @@ export class HeroComponent implements OnInit {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let num = this.document.body.scrollTop;
+
+    this.bgScrollTop = -(num * 0.22);
     console.log(num);
+    
     if (num > 205) {
       this.linkState = 'fadeOut';
       this.linkScrolled = true;
@@ -141,6 +164,13 @@ export class HeroComponent implements OnInit {
       this.scrolled = false;
       this.state = 'fadeIn';
     }
+
+    if (num > 665) {
+      this.bgToggled = false;
+    } else if (!this.bgToggled && num < 650) {
+      this.bgToggled = true;
+    }
+    
 
   }
 }

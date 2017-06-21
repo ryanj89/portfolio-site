@@ -14,15 +14,16 @@ import { DOCUMENT } from '@angular/platform-browser';
           transition('* => *', [
           
               query(':enter', [
-
-                  useAnimation(fadeAnimation, {
-                      params: {
-                          from: 0,
-                          to: 1,
-                          time: '0.5s 100ms ease-out'
-                      }
-                  })
-            
+                  style({ opacity: 0, transform: 'scale(0.95)' }),
+                  // useAnimation(fadeAnimation, {
+                  //     params: {
+                  //         from: 0,
+                  //         to: 1,
+                  //         time: '0.5s 100ms ease-out'
+                  //     }
+                  // }),
+                  animate('0.5s 100ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+                  
               ], { optional: true }),
           
               query(':leave', [
@@ -80,30 +81,49 @@ export class HeaderComponent implements OnInit {
   navScrolled: boolean = false;
   state = '';
   navState = '';
+  bgScrollTop = 0;
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
+
   ngOnInit() { }
 
+  fadeInNav() {
+    this.navState = 'fadeIn';
+    this.navScrolled = true;
+  }
 
+  fadeOutNav() {
+    this.navState = 'fadeOut';
+    this.navScrolled = false;
+  }
 
+  fadeInBrand() {
+    this.scrolled = true;
+    this.state = 'fadeIn';
+  }
+
+  fadeOutBrand() {
+    this.scrolled = false;
+    this.state = 'fadeOut';
+  }
+
+  // WINDOW SCROLL
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let num = this.document.body.scrollTop;
+
     if (num > 205) {
-      this.navState = 'fadeIn';
-      this.navScrolled = true;
+      this.fadeInNav();
     }
     else if (this.navScrolled && num < 205) {
-      this.navState = 'fadeOut';
-      this.navScrolled = false;
+      this.fadeOutNav();
     }
     if (num > 161) {
-      this.scrolled = true;
-      this.state = 'fadeIn';
-    } else if (this.scrolled && num < 110) {
-      this.scrolled = false;
-      this.state = 'fadeOut';
+      this.fadeInBrand();
+    } 
+    else if (this.scrolled && num < 110) {
+      this.fadeOutBrand();
     }
   }
 }
