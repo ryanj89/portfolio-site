@@ -10,14 +10,14 @@
     max-width: 300px;
     margin-right: -300px;
     height: 100vh;
-    background: rgba(2, 18, 35, .4);
+    background: rgba(2, 18, 35, .6);
     color: $primary-text-light;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
 
 
 
     .sidebar-header {
-        height: 54px;
+        height: 60px;
     }
 
     ul.links {
@@ -26,21 +26,26 @@
     }
 
     ul li a {
+        cursor: pointer;
         padding: 10px;
         font-size: 1.1em;
         display: block;
     }
 
     ul li a:hover {
-        color: $primary-color-light;
-        background: $primary-color;
+        padding-left: 25px;
+        background: $primary-color-light;
     }
+}
+#sidebar ul li.active > a:hover {
+    background: $primary-color-light;
 }
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"]  {
+    padding-left: 25px;
     color: $primary-text-light;
-    background: $primary-color;
+    background: $primary-color-lighter;
 }
 
 #sidebar.active {
@@ -70,7 +75,7 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: $primary-color-darker;
+    background: rgba(2, 18, 35, .3);
 }
 
 
@@ -116,17 +121,7 @@ ul ul a {
 
 
 // Media Queries
-@media (max-width: 768px) {
-  
-    // #sidebar {
-    //     margin-right: 0;
-    // }
-    // #sidebar.active {
-    //     margin-right: -300px;
-    //     transform: none;
-    // }
-
-}
+@media (max-width: 768px) { }
 
 
 #overlay {

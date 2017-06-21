@@ -5,7 +5,7 @@
     <div class="sidebar-header">
         <!-- Sidebar Toggle -->
         <button 
-            (click)="onActive()" 
+            (click)="toggleActive()" 
             id="sidebarCollapse" 
             class="sidebar-btn" 
             [class.active]="isActive" 
@@ -18,35 +18,38 @@
 
     <!-- Sidebar Links -->
     <ul class="list-unstyled links">
-        <li routerLinkOptions="active">
-            <a href="#" (click)="onActive()">Home</a>
+        <li [class.active]="currentHeading === 'home'">
+            <a (click)="scrollToHeading('home')">Home</a>
         </li>
-        <li routerLinkOptions="active">
-            <a href="#about-section" (click)="onActive()">About</a>
+        <li [class.active]="currentHeading === 'about-section'">
+            <a (click)="scrollToHeading('about-section')">About</a>
+        </li>
+        <li [class.active]="currentHeading === 'skills-section'">
+            <a (click)="scrollToHeading('skills-section')">Skills</a>
         </li>
 
         <li><!-- Link with dropdown items -->
             <a href="#portfolioSubmenu" data-toggle="collapse" aria-expanded="false">Portfolio</a>
             <ul class="collapse list-unstyled sidebar-submenu" id="portfolioSubmenu">
                 <li>
-                  <a href="#challenge-accepted" (click)="onActive()">Challenge Accepted</a>
+                  <a href="#challenge-accepted" (click)="scrollToHeading('challenge-accepted')">Challenge Accepted</a>
                 </li>
                 <li>
-                  <a href="#we-dj" (click)="onActive()">WeDJ</a>
+                  <a href="#we-dj" (click)="scrollToHeading('we-dj')">WeDJ</a>
                 </li>
                 <li>
-                  <a href="#tower-defense" (click)="onActive()">Tower Defense</a>
+                  <a href="#tower-defense" (click)="scrollToHeading('tower-defense')">Tower Defense</a>
                 </li>
                 <li>
-                  <a href="#trivia-game" (click)="onActive()">Trivia Game</a>
+                  <a href="#trivia-game" (click)="scrollToHeading('trivia-game')">Trivia Game</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="#music-section" (click)="onActive()">Music</a>
+            <a href="#music-section" (click)="scrollToHeading('music-section')">Music</a>
         </li>
         <li>
-            <a href="#contact-section" (click)="onActive()">Contact</a>
+            <a href="#contact-section" (click)="scrollToHeading('contact-section')">Contact</a>
         </li>
     </ul>
 </nav>
