@@ -79,10 +79,11 @@ import { DOCUMENT } from '@angular/platform-browser';
 export class HeaderComponent implements OnInit {
   scrolled: boolean = false;
   navScrolled: boolean = false;
+
+  navbarBg = 'rgba(2, 18, 35, 1)';
   state = '';
   navState = '';
   bgScrollTop = 0;
-  navbarBg = 'rgba(2, 18, 35, 1)';
 
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
@@ -128,7 +129,7 @@ export class HeaderComponent implements OnInit {
       this.fadeOutBrand();
     }
 
-    if (num > 1450) {
+    if (num > 1200) {
       this.navbarBg = 'url("/assets/img/mountain-nav.png")';
     } else {
       this.navbarBg = 'rgba(2, 18, 35, 1)';

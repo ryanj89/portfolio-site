@@ -12,8 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeroComponent } from './hero/hero.component';
 import { AboutComponent } from './about/about.component';
-import { SkillsComponent } from './skills/skills.component';
 import { AppRoutingModule } from './app-routing.module';
+import { IconHighlightDirective } from './shared/icon-highlight.directive';
+import { SkillsComponent } from './skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     SidebarComponent,
     HeroComponent,
     AboutComponent,
-    SkillsComponent
+    SkillsComponent,
+    IconHighlightDirective
   ],
   imports: [
     BrowserModule,

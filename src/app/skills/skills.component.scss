@@ -1,0 +1,19 @@
+@import '~styles/variables';
+
+.devicon-group i {
+    padding: .5em;
+    font-size: 6em;
+    transition: 0.1s all ease-out;
+}
+
+.devicon {
+    color: $primary-color;
+    text-shadow: 1px 1px 4px rgba(1, 22, 39, 0.8);
+}
+
+.colored {
+    transform: scale(1.075);
+    text-shadow: 3px 4px 6px rgba(1, 22, 39, 0.5);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(1, 22, 39, 0.2); 
+}
