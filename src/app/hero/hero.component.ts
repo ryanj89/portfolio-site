@@ -146,7 +146,7 @@ export class HeroComponent implements OnInit {
     let num = this.document.body.scrollTop;
 
     this.bgScrollTop = -(num * 0.22);
-    // console.log(num);
+    console.log(num);
     
     if (num > 205) {
       this.linkState = 'fadeOut';
