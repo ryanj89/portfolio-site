@@ -1,9 +1,27 @@
 @import '~styles/variables';
 
+.skills-category {
+  font-style: italic;
+  font-weight: 300;
+}
+
+//  DEVICONS
 .devicon-group i {
+    display: block;
     padding: .5em;
     font-size: 6em;
     transition: 0.1s all ease-out;
+    &:after {
+        padding-top: 10px;
+        display: block;
+        font-family: $font-family-sans-serif;
+        transition: 0.1s font-size ease-out;
+        transition: 0.1s font-weight linear;
+        transition: 0.1s transform ease-out;
+        text-align: center;
+        font-size: .225em;
+        letter-spacing: 1px;
+    }
 }
 
 .devicon {
@@ -11,9 +29,33 @@
     text-shadow: 1px 1px 4px rgba(1, 22, 39, 0.8);
 }
 
+.devicon-angularjs-plain:after {
+    content: 'Angular';
+    opacity: 0.65;
+}
+.devicon-bootstrap-plain:after {
+    content: 'Bootstrap';
+    opacity: 0.65;
+}
+.devicon-csharp-plain:after {
+    content: 'C#';
+    opacity: 0.65;
+}
+.devicon-css3-plain:after {
+    content: 'CSS3';
+    opacity: 0.65;
+}
+
 .colored {
-    transform: scale(1.075);
-    text-shadow: 3px 4px 6px rgba(1, 22, 39, 0.5);
+    transform: translateY(.175em) scale(1.075);
+    text-shadow: 3px 4px 6px rgba(1, 22, 39, 0.4);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgba(1, 22, 39, 0.2); 
+
+    &:after {
+        text-shadow: none;
+        transform: translateY(-6.25em);
+        font-size: .25em;
+        opacity: 1;
+    }
 }
