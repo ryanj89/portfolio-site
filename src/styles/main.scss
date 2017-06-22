@@ -13,14 +13,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway';
+  font-weight: 700;
 }
 
 
 p {
-  // font-family: 'Playfair Display', serif;
-  // font-weight: 400;
-  font-size: 18px;
-  // line-height: 1.7em;
+  line-height: 2;
   color: $primary-color-dark;
 }
 
