@@ -7,20 +7,15 @@ import { DOCUMENT } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  scrollTop: number = 460;
+  scrollTop: number = 0;
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let num = this.document.body.scrollTop;
+    this.scrollTop = -((num - 455) * 0.15);
 
-
-    if (num > 460) {
-        this.scrollTop = -(num * 0.22);
-    } else {
-      this.scrollTop = 460;
-    }
     // console.log(num);
 
     

@@ -82,6 +82,8 @@ export class HeaderComponent implements OnInit {
   state = '';
   navState = '';
   bgScrollTop = 0;
+  navbarBg = 'rgba(2, 18, 35, 1)';
+
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -124,6 +126,12 @@ export class HeaderComponent implements OnInit {
     } 
     else if (this.scrolled && num < 110) {
       this.fadeOutBrand();
+    }
+
+    if (num > 1450) {
+      this.navbarBg = 'url("/assets/img/mountain-nav.png")';
+    } else {
+      this.navbarBg = 'rgba(2, 18, 35, 1)';
     }
   }
 }
