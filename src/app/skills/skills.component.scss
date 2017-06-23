@@ -1,61 +1,133 @@
 @import '~styles/variables';
 
+.primary {
+    color: $primary-color;
+    transition: .3s all ease-out;
+    
+    &:after {
+        opacity: 0;
+        color: transparent;
+        transition: 1s all ease-out;
+    }
+}
+
 .skills-category {
   font-style: italic;
   font-weight: 300;
 }
 
 //  DEVICONS
-.devicon-group i {
-    display: block;
-    padding: .5em;
-    font-size: 6em;
-    transition: 0.1s all ease-out;
-    &:after {
-        padding-top: 10px;
+.devicon-group {
+    i {
         display: block;
-        font-family: $font-family-sans-serif;
-        transition: 0.1s font-size ease-out;
-        transition: 0.1s font-weight linear;
-        transition: 0.1s transform ease-out;
-        text-align: center;
-        font-size: .225em;
-        letter-spacing: 1px;
+        padding: 25px;
+        font-size: 4em;
+        
+        &:after {
+            padding-top: 10px;
+            display: block;
+            text-align: center;
+            font-size: .28em;
+            font-family: $font-family-sans-serif;
+            letter-spacing: 1px;
+            transition: all .4s ease-out;
+        }
     }
 }
-
 .devicon {
-    color: $primary-color;
     text-shadow: 1px 1px 4px rgba(1, 22, 39, 0.8);
+    
+    &:before {
+        text-align: center;    
+    }
 }
 
 .devicon-angularjs-plain:after {
     content: 'Angular';
-    opacity: 0.65;
 }
 .devicon-bootstrap-plain:after {
     content: 'Bootstrap';
-    opacity: 0.65;
 }
 .devicon-csharp-plain:after {
     content: 'C#';
-    opacity: 0.65;
 }
 .devicon-css3-plain:after {
     content: 'CSS3';
-    opacity: 0.65;
+}
+.devicon-django-plain:after {
+    content: 'Django';
+}
+.devicon-express-original:after {
+    content: 'Express';
+}
+.devicon-git-plain:after {
+    content: 'Git';
+}
+.devicon-gulp-plain:after {
+    content: 'Gulp';
+}
+.devicon-heroku-original:after {
+    content: 'Heroku';
+}
+.devicon-html5-plain:after {
+    content: 'HTML5';
+}
+.devicon-java-plain:after {
+    content: 'Java';
+}
+.devicon-jasmine-plain:after {
+    content: 'Jasmine';
+}
+.devicon-javascript-plain:after {
+    content: 'Javascript';
+}
+.devicon-jquery-plain:after {
+    content: 'jQuery';
+}
+.devicon-mocha-plain:after {
+    content: 'Mocha';
+}
+.devicon-mongodb-plain:after {
+    content: 'MongoDB';
+}
+.devicon-nodejs-plain:after {
+    content: 'Node.js';
+}
+.devicon-photoshop-plain:after {
+    content: 'Photoshop';
+}
+.devicon-protractor-plain:after {
+    content: 'Protractor';
+}
+.devicon-postgresql-plain:after {
+    content: 'PostgreSQL';
+}
+.devicon-python-plain:after {
+    content: 'Python';
+}
+.devicon-react-original:after {
+    content: 'React';
+}
+.devicon-sass-original:after {
+    content: 'Sass';
+}
+.devicon-typescript-plain:after {
+    content: 'TypeScript';
 }
 
+
 .colored {
-    transform: translateY(.175em) scale(1.075);
+    transform:  scale(1.3);
+    transition: .3s all ease;
     text-shadow: 3px 4px 6px rgba(1, 22, 39, 0.4);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgba(1, 22, 39, 0.2); 
 
     &:after {
         text-shadow: none;
-        transform: translateY(-6.25em);
+        transform: translateY(-6em);
         font-size: .25em;
         opacity: 1;
+        transition: 1s all ease-out;
     }
 }
